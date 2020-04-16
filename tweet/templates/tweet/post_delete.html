@@ -1,0 +1,16 @@
+{% extends 'tweet/base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+<div class="w-50 mx-auto text-center detail-div">
+  <p class="detail-p">{{ post.content }}</p>
+  <small class="detail-small">{{ post.author }}</small>
+  <small class="detail-small">{{ post.posted_at|date:'Y-m-d P' }}</small>
+</div>
+<form method="POST">
+  {% csrf_token %}
+  <button type="submit" class="btn btn-outline-danger btn-lg btn-block w-50 mx-auto delete-btn">本当に削除しますか？</button>
+</form>
+{% endblock content %}

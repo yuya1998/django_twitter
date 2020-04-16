@@ -1,0 +1,20 @@
+{% extends 'tweet/base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+<div class="w-50 mx-auto text-center detail-div">
+  <p class="detail-p">{{ post.content }}</p>
+  <small class="detail-small">{{ post.author }}</small>
+  <small class="detail-small">{{ post.posted_at|date:'Y-m-d P' }}</small>
+</div>
+
+{% if request.user == post.author %}
+<a class="btn btn-outline-primary btn-lg btn-block w-50 mx-auto detail-btn" href="{% url 'post-update' post.id %}"
+  role="button">編集</a>
+<a class="btn btn-outline-danger btn-lg btn-block w-50 mx-auto detail-btn" href="{% url 'post-delete' post.id %}"
+  role="button">削除</a>
+{% endif %}
+
+{% endblock content %}
